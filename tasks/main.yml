@@ -1,2 +1,63 @@
 ---
 # tasks file for baseline
+
+- name: Update all packages
+  package:
+    name: "*"
+    state: latest
+  become: yes
+  become_user: root
+
+- name: Install custom aliases and prompts
+  copy:
+    src: "{{ thing }}"
+    dest: "/etc/profile.d/{{ thing }}"
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+  become_user: root
+  loop:
+    - bash_prompt.sh
+    - bash_autologout.sh
+    - aliases.sh
+  loop_control:
+    loop_var: thing
+
+- name: Redhat only - Install Yum packages
+  yum:
+    name: ["unzip", "nano", "vim-enhanced", "screen"]
+    state: latest
+  when: ansible_pkg_mgr == "yum"
+  become: yes
+  become_user: root
+
+- name: Copy SSH issue file
+  copy:
+    src: ssh-issue
+    dest: /etc/issue
+    mode: 0644
+    owner: root
+    group: root
+  become: yes
+  become_user: root
+
+- name: Copy SSH MOTD file
+  template:
+    src: ssh-motd
+    dest: /etc/motd
+    mode: 0644
+    owner: root
+    group: root
+  become: yes
+  become_user: root
+
+- name: Copy custom screenrc file
+  copy:
+    src: screenrc
+    dest: /etc/screenrc
+    mode: 0644
+    owner: root
+    group: root
+  become: yes
+  become_user: root
