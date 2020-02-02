@@ -1,18 +1,15 @@
 # Baseline Config and Creature Comforts
 
-A brief description of the role goes here.
+This is basically my creature comforts role. It updates all of the packages via the default package manager, then sets the `bash` prompt to one that I find more useful, and install a few other config items. Definitely peruse the [files](files/) and [templates](templates/) before deciding if this is something you want to use.
 
 ## Requirements
 
-This role is built specifically with Enterprise Linux (CentOS, RHEL, Scientific Linux) in mind. It might work on Fedora, but I haven't really tested it.
+- Enterprise Linux 7 or 8 (this probably will work on Fedora, but I've not tested it)
+- Ability to `become` the `root` user to manipulate system config files
 
 ## Role Variables
 
 Doesn't need any special variables. Should be fire-and-forget.
-
-## Dependencies
-
-- The ability to `become` the `root` user to manipulate system config files
 
 ## Example Playbook
 
