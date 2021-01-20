@@ -1,0 +1,6 @@
+vbell on
+vbell_msg "   Wuff  ----  Wuff!!  "
+startup_message off
+hardstatus alwayslastline
+caption always "%?%F%{+b}%?%3n %t%? [%h]%? - %u"
+hardstatus alwayslastline "%{kW}%{.y}%H %{.b}|%{.y} %D %Y-%02m-%02d %0c:%s %{b}|%{G} %l %{.b}|%{.W} %-w%{+u}%n %t%{-u} %+w%="
